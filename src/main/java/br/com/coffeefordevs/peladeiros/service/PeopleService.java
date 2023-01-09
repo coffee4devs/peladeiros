@@ -18,11 +18,12 @@ public class PeopleService {
 
     public PeopleDTO insertDTO(PeopleDTO peopleDTO) {
         if(peopleDTO != null) {
-            PeopleEntity peopleEntity = insert(peopleDTO.getName(), peopleDTO.getLastName(), peopleDTO.getPhone());
+            PeopleEntity peopleEntity = insert(peopleDTO.getName(), peopleDTO.getLastName(), peopleDTO.getPhone(), peopleDTO.getEmail());
             return new PeopleDTO(
                     peopleEntity.getName(),
                     peopleEntity.getLastName(),
-                    peopleEntity.getPhone()
+                    peopleEntity.getPhone(),
+                    peopleEntity.getEmail()
             );
         }
         return null;
@@ -34,7 +35,8 @@ public class PeopleService {
             dto.add(new PeopleDTO(
                     people.getName(),
                     people.getLastName(),
-                    people.getPhone()
+                    people.getPhone(),
+                    people.getEmail()
             ));
         }
         return dto;
@@ -45,15 +47,17 @@ public class PeopleService {
         return peopleEntity.map(entity -> new PeopleDTO(
                 entity.getName(),
                 entity.getLastName(),
-                entity.getPhone()
+                entity.getPhone(),
+                entity.getEmail()
         )).orElse(null);
     }
 
-    private PeopleEntity insert(String name, String lastName, String phone) {
+    private PeopleEntity insert(String name, String lastName, String phone, String email) {
         return peopleRepository.save(new PeopleEntity(
                 name,
                 lastName,
-                phone
+                phone,
+                email
         ));
     }
 

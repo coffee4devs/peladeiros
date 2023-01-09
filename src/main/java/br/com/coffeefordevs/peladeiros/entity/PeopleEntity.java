@@ -14,10 +14,11 @@ public class PeopleEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public PeopleEntity(String name, String lasName, String phone) {
+    public PeopleEntity(String name, String lasName, String phone, String email) {
         this.name = name;
         this.lastName = lasName;
         this.phone = phone;
+        this.email = email;
     }
 
     @Id
@@ -29,6 +30,9 @@ public class PeopleEntity implements Serializable {
 
     @NonNull
     private String lastName;
+
+    @NonNull
+    private String email;
 
     private String phone;
 
