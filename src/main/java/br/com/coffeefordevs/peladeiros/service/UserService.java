@@ -22,7 +22,7 @@ public class UserService {
 
     public ReturnDTO insertDTO(UserDTO dto) {
         if(dto != null) {
-            UserEntity playerEntity = insert(new UserEntity(dto.getIdPeople(), dto.getPassword()));
+            UserEntity playerEntity = insert(new UserEntity(dto.getEmail(), dto.getPassword()));
             return new ReturnDTO(
                     CodeEnum.SUCCESS.getCod(),
                     CodeEnum.SUCCESS.getMessage()
@@ -35,7 +35,7 @@ public class UserService {
         List<UserDTO> dto = new ArrayList<>();
         for(UserEntity entity : findAll()) {
             dto.add( new UserDTO(
-                    entity.getIdPeople(),
+                    entity.getEmail(),
                     entity.getPassword()
             ) );
         }
@@ -45,7 +45,7 @@ public class UserService {
     public UserDTO findDTOById(Integer id) {
         Optional<UserEntity> userEntity = findById(id);
         return userEntity.map(entity -> new UserDTO(
-                entity.getIdPeople(),
+                entity.getEmail(),
                 entity.getPassword()
         )).orElse(null);
     }

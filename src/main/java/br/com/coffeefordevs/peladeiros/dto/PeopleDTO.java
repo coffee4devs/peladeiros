@@ -19,6 +19,5 @@ public class PeopleDTO implements Serializable {
     private String name;
     private String lastName;
     private String phone;
-    private String email;
 
 }

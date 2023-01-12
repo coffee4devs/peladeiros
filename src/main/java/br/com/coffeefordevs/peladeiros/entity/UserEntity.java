@@ -10,13 +10,13 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
+@Table(name = "user_people")
 public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public UserEntity(Integer idPeople, String password) {
-        this.idPeople = idPeople;
+    public UserEntity(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -25,7 +25,7 @@ public class UserEntity implements Serializable {
     private Integer id;
 
     @NonNull
-    private Integer idPeople;
+    private String email;
 
     @NonNull
     private String password;
